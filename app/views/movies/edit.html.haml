@@ -1,0 +1,11 @@
+%h2 Edit Existing Movie
+ 
+= form_tag movie_path(@movie), :method => :put do
+  - unless @movie.errors.empty?
+    #warning
+      Errors prevented this movie from being #{controller.action_name}d:
+      %ul
+        - @movie.errors.full_messages.each do |error|
+          %li= error
+  = render :partial => 'movie_form'
+  = submit_tag 'Update Movie Info'
