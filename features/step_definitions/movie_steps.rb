@@ -7,7 +7,7 @@ Given /the following movies exist/ do |movies_table|
 end
  
 Then /(.*) seed movies should exist/ do | n_seeds |
-  assert Movie.count == n_seeds.to_i
+  expect(Movie.count).to eq(n_seeds.to_i)
 end
 
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
@@ -26,5 +26,5 @@ end
 
 Then /I should see all the movies/ do
   rows = page.all('#movies tr').size - 1
-  assert rows == Movie.count()
+  expect(rows).to eq(Movie.count())
 end
